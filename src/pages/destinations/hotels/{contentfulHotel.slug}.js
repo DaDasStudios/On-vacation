@@ -182,6 +182,7 @@ export const query = graphql`
       coverImage {
         gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
         title
+        publicUrl
         id
       }
       destination {
@@ -200,6 +201,6 @@ export const query = graphql`
   }
 `
 
-export const Head = ({ data }) => <Seo title={data.name} />
+export const Head = ({ data }) => <Seo title={data.name} image={data.coverImage.publicUrl}/>
 
 export default HotelPage
