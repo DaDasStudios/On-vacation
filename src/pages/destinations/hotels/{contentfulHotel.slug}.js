@@ -201,6 +201,11 @@ export const query = graphql`
   }
 `
 
-export const Head = ({ data }) => <Seo title={data.name} image={data.coverImage.publicUrl}/>
+export const Head = ({ data }) => (
+  <Seo
+    title={data.contentfulHotel.name}
+    image={data.contentfulHotelcoverImage.publicUrl}
+  />
+)
 
 export default HotelPage
