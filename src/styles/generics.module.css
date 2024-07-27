@@ -1,0 +1,4 @@
+
+.landing-page-container {
+  @apply container mx-auto px-5 xl:px-48 2xl:px-60;
+}

@@ -1,0 +1,17 @@
+
+
+.card-scroll::-webkit-scrollbar {
+  width: 8px;               /* width of the entire scrollbar */
+}
+
+.card-scroll::-webkit-scrollbar-track {
+  background: theme("colors.bone");        /* color of the tracking area */
+}
+
+.card-scroll::-webkit-scrollbar-thumb {
+  background-color: theme("colors.primary/70");    /* color of the scroll thumb */
+}
+
+.card-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: theme("colors.primary-light/70");    /* color of the scroll thumb */
+}

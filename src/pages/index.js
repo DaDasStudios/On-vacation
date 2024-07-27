@@ -1,176 +1,269 @@
 import * as React from "react"
+import { Link, graphql } from "gatsby"
+import { Star } from "lucide-react"
+import { StaticImage } from "gatsby-plugin-image"
+import Layout from "../components/layout"
+import Seo from "../components/seo"
+import landingPageVideo from "../assets/pexels-landing-page.mp4"
+import { landingPageContainer } from '../styles/generics.module.css'
 
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
-
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
-  color: "#8954A8",
-}
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/getting-started/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
-
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-          >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
+    <Layout useOverlay={true}>
+      <video
+        autoPlay
+        muted
+        loop
+        className="pointer-events-none overflow-hidden absolute xl:min-w-full min-w-[1280px] -z-10 inset-0"
+      >
+        <source
+          src={landingPageVideo}
+          type="video/mp4"
+        />
+      </video>
+      <section className="bg-bone mt-[300px] md:mt-[600px] py-32 text-brown">
+        <div className={landingPageContainer}>
+          <div className="flex max-md:flex-wrap items-center justify-center gap-12 ">
+            <div className="flex flex-col gap-6 items-center md:items-start">
+              <h2 className="font-elegant max-sm:text-5xl text-6xl font-bold text-center md:text-left">
+                Viaja a la Guajira
+              </h2>
+              <p className="text-xl tracking-wide leading-9 max-md:text-center">
+                Descubre la magia de este oasis desde <span className="font-bold">$160.000</span> por noche por persona
+                con desayuno, almuerzo y cena incluidos.
+              </p>
+              <div className="text-xl font-semibold text-secondary">
+                <div className="flex items-center max-md:justify-center">
+                  <Star
+                    className="mr-1"
+                    fill="currentColor"
+                  />
+                  <Star
+                    className="mr-1"
+                    fill="currentColor"
+                  />
+                  <Star
+                    className="mr-1"
+                    fill="currentColor"
+                  />
+                  <Star
+                    className="mr-1"
+                    fill="currentColor"
+                  />
+                  <Star
+                    className="mr-1"
+                    fill="currentColor"
+                  />
+                </div>
+                <p>Hoteles de alta calidad</p>
+              </div>
+              <Link
+                to="/destinations/guajira"
+                className="bg-primary text-xl px-10 py-4 rounded text-white font-semibold text-center font-elegant transition-colors hover:bg-primary-light"
               >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
+                Averiguar
+              </Link>
+            </div>
+            <StaticImage
+              src="../images/guajira1.jpg"
+              alt="Guajira imagen"
+              placeholder="blurred"
+              layout="constrained"
+            />
+          </div>
+          <div className="flex max-md:justify-center max-md:flex-wrap gap-12 mt-12">
+            <StaticImage
+              class="self-center"
+              src="../images/guajira3.png"
+              alt="Flamencos de la guajira"
+              placeholder="blurred"
+              layout="constrained"
+            />
+            <StaticImage
+              src="../images/guajira2.jpg"
+              alt="Playa de arena roja"
+              placeholder="blurred"
+              layout="constrained"
+            />
+          </div>
+          <StaticImage
+            class="mt-12"
+            src="../images/guajira4.png"
+            alt="Amacas frenet a la playa"
+            placeholder="blurred"
+            layout="constrained"
+          />
+        </div>
+      </section>
+      <section className="bg-secondary text-white py-32">
+        <div className={landingPageContainer}>
+          <div className="flex flex-col text-center">
+            <h2 className="font-semibold font-elegant max-sm:text-5xl text-6xl mb-8">Conoce el Amazonas</h2>
+            <p className="text-xl tracking-wide leading-9">
+              Prepárate para una aventura llena de emociones en la selva más grande de América Latina
+            </p>
+            <StaticImage
+              class="mt-12"
+              src="../images/amazonas1.png"
+              alt="Río Amazonas"
+              placeholder="blurred"
+            />
+          </div>
+          <div className="flex max-md:flex-wrap justify-center gap-12">
+            <StaticImage
+              class="mt-12"
+              src="../images/amazonas3.png"
+              alt="Indigenas en canoa"
+              placeholder="blurred"
+            />
+            <div className="flex flex-col gap-5 justify-center">
+              <h2 className="font-elegant max-md:text-center text-right text-5xl mb-4">El pulmón del mundo</h2>
+              <h3 className="font-hand text-4xl max-md:text-center text-left text-secondary-light ">
+                ¡Desde $170.000!
+              </h3>
+              <p className="leading-9 max-md:text-center text-xl tracking-wide">
+                Por noche por persona con desayuno, almuerzo y cena incluidos.
+              </p>
+              <Link
+                to="/destinations/amazonas"
+                className="bg-secondary-light/50 text-white font-medium font-elegant text-center px-8 py-4 rounded hover:bg-secondary-light transition-colors text-xl max-md:w-fit max-md:self-center"
+              >
+                Me interesa
+              </Link>
+            </div>
+          </div>
+          <div className="flex max-md:flex-wrap gap-12 justify-center items-center mt-10">
+            <StaticImage
+              src="../images/amazonas5.jpg"
+              alt="Chozas de una tribu"
+              placeholder="blurred"
+            />
+            <StaticImage
+              src="../images/amazonas4.jpg"
+              alt="Cascada en el Amazonas"
+              placeholder="blurred"
+            />
+          </div>
+        </div>
+      </section>
+      <section className="bg-bone py-32 text-brown">
+        <div className={landingPageContainer}>
+          <div className="flex max-md:flex-wrap items-center justify-center gap-12 ">
+            <div className="flex flex-col gap-6 max-md:items-center items-start">
+              <h2 className="font-elegant max-md:text-center max-md:text-5xl text-6xl font-bold">
+                Descubre San Andrés
+              </h2>
+              <p className="text-xl max-md:text-center tracking-wide leading-9">
+                Ida y vuelta y hospedaje en el hotel <span className=" font-bold">Caribeean</span> desde{" "}
+                <span className="font-bold">$188.000</span> con desayuno, almuerzo y cena incluidos.
+              </p>
+              <div className="text-xl font-semibold text-secondary">
+                <div className="max-md:justify-center flex items-center">
+                  <Star
+                    className="mr-1"
+                    fill="currentColor"
+                  />
+                  <Star
+                    className="mr-1"
+                    fill="currentColor"
+                  />
+                  <Star
+                    className="mr-1"
+                    fill="currentColor"
+                  />
+                  <Star
+                    className="mr-1"
+                    fill="currentColor"
+                  />
+                  <Star
+                    className="mr-1"
+                    fill="currentColor"
+                  />
+                </div>
+                <p>Hoteles de alta calidad</p>
+              </div>
+              <Link
+                to="/destinations/san-andres"
+                className="bg-primary text-xl px-10 py-4 rounded text-white font-semibold text-center font-elegant transition-colors hover:bg-primary-light relative group"
+              >
+                Saber más
+                <div className="absolute top-0 right-0 rounded-md px-2 py-1 font-normal translate-x-7 -translate-y-4 group-hover:animate-gradient bg-gradient-size bg-hot">
+                  ¡Hot!
+                </div>
+              </Link>
+            </div>
+            <StaticImage
+              src="../images/san-andres1.png"
+              alt="Playa de San Andrés"
+              placeholder="blurred"
+              layout="constrained"
+            />
+          </div>
+          <div className="flex justify-center">
+            <StaticImage
+              class="mt-12"
+              src="../images/san-andres2.webp"
+              alt="Vista aerea de la isla de San Andrés"
+              placeholder="blurred"
+              layout="constrained"
+            />
+          </div>
+          <div className="font-elegant my-[100px] text-center flex flex-col gap-12">
+            <h3 className="font-bold text-4xl sm:text-5xl text-brown">El mar de los siete colores</h3>
+            <blockquote className="leading-10 sm:leading-[50px] tracking-wider text-2xl sm:text-3xl md:text-4xl font-medium px-[5%] text-brown/85">
+              <span className="text-secondary">"</span>En San Andrés, las aguas turquesas, arenas blancas y la cálida
+              brisa caribeña crean un paraíso perfecto para perderse y encontrar la verdadera esencia de la tranquilidad
+              tropical<span className="text-secondary">"</span>
+            </blockquote>
+          </div>
+          <div className="flex max-md:flex-wrap gap-12 justify-center items-center mt-10">
+            <StaticImage
+              src="../images/san-andres3.jpg"
+              alt="Chozas de una tribu"
+              placeholder="blurred"
+            />
+            <StaticImage
+              src="../images/san-andres4.jpg"
+              alt="Cascada en el Amazonas"
+              placeholder="blurred"
+            />
+          </div>
+          <div className="gap-12 mt-16 flex flex-col items-center">
+            <h2 className="text-brown font-bold max-sm:text-4xl text-5xl text-center">¿Buscas otro sitio?</h2>
+            <p className="text-brown text-xl text-center tracking-wide">
+              Encuentra planes personalizados para la cantidad de personas que requieras, en el hotel que quieras, en el
+              lugar que quieras, a la hora que quieras.
+            </p>
+            <Link
+              className="px-8 py-4 rounded text-white bg-primary hover:bg-primary-light transition-colors text-2xl font-medium font-elegant"
+              to="/destinations"
+            >
+              Destinos
+            </Link>
+            <p className="text-brown font-semibold text-2xl text-center tracking-wide">Ó mejor</p>
+            <a
+              className="px-8 py-4 rounded text-white bg-secondary hover:bg-secondary-light transition-colors text-2xl font-medium font-elegant"
+              href={data.site.siteMetadata.adviserUrl}
+            >
+              Hablar con asesor
+            </a>
+          </div>
+        </div>
+      </section>
+    </Layout>
   )
 }
 
 export default IndexPage
 
-export const Head = () => <title>Home Page</title>
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        adviserUrl
+      }
+    }
+  }
+`
+
+export const Head = () => <Seo title="Inicio" />

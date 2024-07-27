@@ -1,0 +1,52 @@
+
+.nav-btn {
+  letter-spacing: 0;
+  transition: letter-spacing 300ms ease-in-out;
+  text-shadow: 0 0 50px theme("colors.brown");
+}
+
+.nav-btn-overlay {
+  letter-spacing: 0;
+  transition: letter-spacing 300ms ease-in-out;
+  text-shadow: 2px 2px 30px theme("colors.white");
+}
+
+.nav-btn:hover, .nav-btn:active {
+  letter-spacing: 2px;
+}
+
+.nav-btn::before, .nav-btn::after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  border: 1px solid theme("colors.brown" / 0%);
+  width: 0;
+  transition: all 280ms ease-in-out;
+}
+
+.nav-btn:hover::before, .nav-btn:hover::after {
+  transition: width 280ms ease-in-out;
+  border-color: theme("colors.brown" / 70%);
+  width: 100%;
+}
+
+.nav-btn-overlay:hover, .nav-btn-overlay:active {
+  letter-spacing: 2px;
+}
+
+.nav-btn-overlay::before, .nav-btn-overlay::after {
+  content: "";
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  border: 1px solid theme("colors.white" / 0%);
+  width: 0;
+  transition: all 280ms ease-in-out;
+}
+
+.nav-btn-overlay:hover::before, .nav-btn-overlay:hover::after {
+  transition: width 280ms ease-in-out;
+  border-color: theme("colors.white" / 70%);
+  width: 100%;
+}

@@ -1,0 +1,24 @@
+
+.reactMarkdown h1 {
+  font-size: theme("fontSize.2xl");
+  font-family: theme("fontFamily.elegant");
+}
+
+.reactMarkdown h2 {
+  font-family: theme("fontFamily.elegant");
+  font-size: theme("fontSize.xl");
+}
+
+.reactMarkdown h3 {
+  font-family: theme("fontFamily.elegant");
+  font-size: theme("fontSize.base");
+}
+
+.reactMarkdown p {
+  font-size: theme("fontSize.base");
+}
+
+.reactMarkdown ul {
+  list-style: disc;
+  list-style-position: inside;
+}
