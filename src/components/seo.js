@@ -55,7 +55,7 @@ const Seo = ({ title, description, image }) => {
       />
       <meta
         property="og:url"
-        content={data.site.siteUrl}
+        content={data.site.siteMetadata.siteUrl}
       />
       <meta
         property="og:image"
