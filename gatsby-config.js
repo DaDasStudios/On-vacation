@@ -26,6 +26,8 @@ module.exports = {
     "gatsby-transformer-sharp",
     "gatsby-plugin-postcss",
     "gatsby-plugin-mdx",
+    'gatsby-plugin-robots-txt',
+    "gatsby-plugin-sitemap",
     {
       resolve: "gatsby-source-filesystem",
       options: {
