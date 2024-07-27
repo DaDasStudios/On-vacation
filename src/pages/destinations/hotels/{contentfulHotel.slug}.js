@@ -204,7 +204,7 @@ export const query = graphql`
 export const Head = ({ data }) => (
   <Seo
     title={data.contentfulHotel.name}
-    image={data.contentfulHotelcoverImage.publicUrl}
+    image={data.contentfulHotel.coverImage.publicUrl}
   />
 )
 
