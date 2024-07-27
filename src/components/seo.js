@@ -68,6 +68,10 @@ const Seo = ({ title, description, image }) => {
 
       {/** TWITTER */}
       <meta
+        property="twitter:title"
+        content={`On Vacation - ${title}` || data.site.siteMetadata.title}
+      />
+      <meta
         property="twitter:card"
         content="summary_large_image"
       />
